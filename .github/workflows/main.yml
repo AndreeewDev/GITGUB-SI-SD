@@ -1,0 +1,29 @@
+name: CI-CD-Pipeline-to-AWS
+
+env:
+  EB_PACKAGE_S3_BACKET_NAME : "kaakuz-flask-application"
+  EB_APPLICARION_NAME       : "MyFlask"
+  EB_ENVIRONMENT_NAME       : "NyFlask-env"
+  DEPLOY_PACKAGE_NAME       : "flask_app_${{ github.sha }}.zip"
+  AWS_REGION_NAME           : "us-east-1"
+  
+on:
+    push:
+        branches: main
+  
+jobs:
+  mi_si_part:
+   runs-on: ubuntu-latest
+   
+  build: 
+    
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git clone our repo
+        uses: actions/checkout@v3
+ 
+     
+      - name: Create ZIp deployment package
+        run : zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
+ 
