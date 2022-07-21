@@ -13,17 +13,12 @@ on:
   
 jobs:
   mi_si_part:
-   runs-on: ubuntu-latest
-   
-  build: 
-    
     runs-on: ubuntu-latest
-
+   
     steps:
-      - name: Git clone our repo
-        uses: actions/checkout@v3
+    - name: Git clone our repo
+      uses: actions/checkout@v3
  
-     
-      - name: Create ZIp deployment package
-        run : zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
+    - name: Create ZIp deployment package
+      run : zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
  
